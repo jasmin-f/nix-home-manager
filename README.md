@@ -2,8 +2,8 @@
 
 ## TODO
 
-[ ] VS Code Extensions mit nix  
-[ ] Git mit nix auf wsl einrichten
+- [ ] VS Code Extensions mit nix  
+- [ ] Git mit nix auf wsl einrichten
 
 ## Infos
 
