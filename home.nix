@@ -75,32 +75,64 @@
 
 
   programs = {
-  
+
     bash.enable = true; # see note on other shells below
-    
-    
+
+
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
 
-    # Direnv installation https://github.com/nix-community/nix-direnv?tab=readme-ov-file#via-home-manager
     direnv = {
-      enable = true;
-      enableBashIntegration = true; # see note on other shells below
-      nix-direnv.enable = true;
+        enable = true;
+        enableBashIntegration = true; # see note on other shells below
+        nix-direnv.enable = true;
     };
 
-    # TODO
-    # vscode = {
-    #   enable = true;
-    #   extensions = with pkgs.vscode-extensions; [
-    #     # dracula-theme.theme-dracula
-    #     # vscodevim.vim
-    #     # yzhang.markdown-all-in-one
-    #   ];
-    # };
+      # TODO
+      # vscode = {
+      #   enable = true;
+      #   extensions = with pkgs.vscode-extensions; [
+      #     # dracula-theme.theme-dracula
+      #     # vscodevim.vim
+      #     # yzhang.markdown-all-in-one
+      #   ];
+      # };
 
 
+    zsh = {
+      enable = true;
+      
+      # Settings for better user experience
+      autocd = true;
+      dotDir = ".config/zsh";  # Store Zsh files in XDG location
+      
+        # Syntax highlighting
+        syntaxHighlighting = {
+          enable = true;
+          highlighters = [
+            "main"
+            "brackets"
+            "pattern"
+            "cursor"
+            "root"
+          ];
+          styles = {
+            comment = "fg=black,bold";
+            alias = "fg=magenta,bold";
+          };
+          patterns = {
+            "rm -rf *" = "fg=white,bold,bg=red";
+          };
+        };
+
+        autosuggestion = {
+          enable = true;
+          highlight = "fg=244";
+          strategy = ["history" "completion"];
+        };
+
+      };
   };
 
 
