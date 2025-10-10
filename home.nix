@@ -15,6 +15,7 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -81,6 +82,12 @@
   # programs.home-manager.enable = true;
 
 
+    
+    # activate syntax highlighting
+    home.shellAliases = { ip = "ip --color=auto"; };
+    # home.shellAliases = { grep = "grep --color=auto"; };
+
+
   programs = {
 
     # Let Home Manager install and manage itself.
@@ -104,6 +111,7 @@
       # };
 
 
+  
     bash = {
       enable = true;
 
