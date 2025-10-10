@@ -10,6 +10,7 @@
 
 - https://github.com/nix-community/home-manager  
 - https://nixos.wiki/wiki/Home_Manager
+- https://mynixos.com/home-manager/options/home
   
     
 - <https://github.com/omega-800/nixos-config>
