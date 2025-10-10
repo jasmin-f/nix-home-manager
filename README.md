@@ -7,8 +7,13 @@
 ## Infos
 
 ### Links
-https://github.com/nix-community/home-manager  
-https://nixos.wiki/wiki/Home_Manager
+
+- https://github.com/nix-community/home-manager  
+- https://nixos.wiki/wiki/Home_Manager
+  
+    
+- <https://github.com/omega-800/nixos-config>
+- <https://home-manager.dev/manual/24.11/>
 
 Neue Installation
 
@@ -44,3 +49,4 @@ TODO
 ## Zsh 
 
 gute Codebeispiele: https://deepwiki.com/nix-community/home-manager/5.1-shell-configuration-examples
+
