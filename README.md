@@ -51,3 +51,12 @@ TODO
 
 gute Codebeispiele: https://deepwiki.com/nix-community/home-manager/5.1-shell-configuration-examples
 
+## WSL
+wslpath um Windows Pfad zu WSL Pfad umzuwandeln :D
+```bash
+wslpath '\\wsl.localhost\Ubuntu\home'
+cd $(wslpath 'C:\Users\jf\')
+
+# zu windows umwandeln mit -w
+wslpath -w '/home/jf/.profile'
+```
