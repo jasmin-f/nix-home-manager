@@ -100,16 +100,6 @@
         nix-direnv.enable = true;
     };
 
-      # TODO
-      # vscode = {
-      #   enable = true;
-      #   extensions = with pkgs.vscode-extensions; [
-      #     # dracula-theme.theme-dracula
-      #     # vscodevim.vim
-      #     # yzhang.markdown-all-in-one
-      #   ];
-      # };
-
 
   
     bash = {
@@ -257,6 +247,8 @@
     
 
     zsh = {
+      # https://mynixos.com/home-manager/options/programs.zsh
+
       enable = true;
       
       # Settings for better user experience
@@ -304,6 +296,5 @@
 
       };
   };
-
 
 }
