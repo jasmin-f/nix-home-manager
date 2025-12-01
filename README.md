@@ -3,6 +3,8 @@
 ## TODO
 
 - [ ] VS Code Extensions mit nix  
+- [ ] bashrc korrekt einfügen
+- [ ] (mehr siehe andere Todos)
 
 ## Infos
 
@@ -60,3 +62,19 @@ cd $(wslpath 'C:\Users\jf\')
 # zu windows umwandeln mit -w
 wslpath -w '/home/jf/.profile'
 ```
+
+## Podman Desktop mit Windows zu WSL
+
+#### Neustarten von Podman default machine
+Wenn es im Zustand "Starting" bleibt.
+
+Auf Windows:
+```bash
+podman machine stop
+podman machine rm -f
+```
+
+Dann den Setup in Podman Desktop neu ausführen (ich habe Autostart deaktiviert, und "machine with root privileges" aktiviert gelassen).
+
+Podman machine wechselt zu "Running".
+In WSL wird `ls -l /mnt/wsl/podman-sockets/` gefunden.

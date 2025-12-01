@@ -22,6 +22,7 @@
   # environment.
   home.packages = [
     
+    pkgs.podman
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -117,7 +118,15 @@
       enable = true;
 
       bashrcExtra = 
-        ''unix:///mnt/wsl/podman-sockets/podman-machine-default/podman-user.sock'' +
+
+      ''
+        if [ -S /mnt/wsl/podman-sockets/podman-machine-default/podman.sock ]; then
+          podman system connection add wsl --default \
+            unix:///mnt/wsl/podman-sockets/podman-machine-default/podman.sock 2>/dev/null || true
+        fi
+      '' +
+
+        # ''unix:///mnt/wsl/podman-sockets/podman-machine-default/podman-user.sock'' +
 
         ''
         # ~/.bashrc: executed by bash(1) for non-login shells.
