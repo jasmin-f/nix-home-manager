@@ -78,3 +78,14 @@ Dann den Setup in Podman Desktop neu ausführen (ich habe Autostart deaktiviert,
 
 Podman machine wechselt zu "Running".
 In WSL wird `ls -l /mnt/wsl/podman-sockets/` gefunden.
+
+### Wenn home-manager und nix nicht mehr gefunden werden
+
+```
+#nix hinzufügen
+. $HOME/.nix-profile/etc/profile.d/nix.sh
+
+# home manager reparierte Datei ausführen
+nix run home-manager/master -- switch
+```
+

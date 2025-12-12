@@ -270,7 +270,8 @@
         if [ -e /home/jf/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jf/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 
-        zsh
+        # problem with open ssh 
+        # zsh
       '';
 
     };
@@ -313,7 +314,7 @@
         };
         
         oh-my-zsh = {
-          enable = true;
+          enable = true; 
           # theme = "robbyrussell";
           plugins =
             [
