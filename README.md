@@ -82,7 +82,7 @@ In WSL wird `ls -l /mnt/wsl/podman-sockets/` gefunden.
 ### Wenn home-manager und nix nicht mehr gefunden werden
 
 ```
-#nix hinzufügen
+# nix hinzufügen
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
 # home manager reparierte Datei ausführen

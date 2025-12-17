@@ -270,8 +270,10 @@
         if [ -e /home/jf/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jf/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 
-        # problem with open ssh 
-        # zsh
+        # problem with open ssh : not saving keys and ssh path missing (eval needed) 
+
+        # todo: autostart von zsh mit nix konfigurieren
+        zsh
       '';
 
     };
@@ -325,6 +327,25 @@
               # "history"
             ];
         };
+
+
+        shellAliases = {
+          # or use ctrl+r to find last commands
+          nd = "nix develop";
+          zonedel = "find . -name '*:Zone.Identifier' -type f -delete";
+        };
+
+
+        initContent = ''
+          # my most used directories :)
+            # (use with ~nix, ~proj)
+            hash -d nix=/mnt/c/Users/jf/code/wsl/nix
+            hash -d hm=/home/jf/.config/home-manager/
+            hash -d cfg=$HOME/.config
+
+            hash -d sep1=/mnt/c/Users/jf/code/studium/ost_3_semester/sep1
+            hash -d proj=/home/jf/wsl-code/ost_3_semester/
+        '';
         
 
       };
