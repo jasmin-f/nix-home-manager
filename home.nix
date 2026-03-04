@@ -21,7 +21,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    
+    pkgs.man-pages pkgs.man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
+
     pkgs.podman
     # pkgs.hello
 
