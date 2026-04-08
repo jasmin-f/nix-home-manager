@@ -13,20 +13,20 @@
 - <https://home-manager.dev/manual/24.11/>
 
 Neue Installation
-
-    nix run home-manager/master -- init --switch
-
+```shell
+nix run home-manager/master -- init --switch
+```
 Konfiguration anpassen
-
-    code /home/jf/.config/home-manager/home.nix
-    man home-configuration.nix
-
+```shell
+code /home/jf/.config/home-manager/home.nix
+man home-configuration.nix
+```
 Starten (bei Änderungen)
-
-    home-manager switch
-
+```shell
+home-manager switch
+```
 Nix Umgebungsvariable temporär erstellen
-```bash
+```shell
 . /home/jf/.nix-profile/etc/profile.d/nix.sh 
 ```
 
@@ -39,17 +39,12 @@ Pfad dieser Datei auf Windows: `\\wsl.localhost\Ubuntu\home\jf\.config\home-mana
 ## Nix Direnv Installation
 https://github.com/nix-community/nix-direnv?tab=readme-ov-file#via-home-manager
 
-## VS Code Extensions
-
-TODO
-
 ## Zsh 
-
 gute Codebeispiele: https://deepwiki.com/nix-community/home-manager/5.1-shell-configuration-examples
 
 ## WSL
 wslpath um Windows Pfad zu WSL Pfad umzuwandeln :D
-```bash
+```shell
 wslpath '\\wsl.localhost\Ubuntu\home'
 cd $(wslpath 'C:\Users\jf\')
 
@@ -63,7 +58,7 @@ wslpath -w '/home/jf/.profile'
 Wenn es im Zustand "Starting" bleibt.
 
 Auf Windows:
-```bash
+```shell
 podman machine stop
 podman machine rm -f
 ```
@@ -73,9 +68,13 @@ Dann den Setup in Podman Desktop neu ausführen (ich habe Autostart deaktiviert,
 Podman machine wechselt zu "Running".
 In WSL wird `ls -l /mnt/wsl/podman-sockets/` gefunden.
 
+## Infos zu NixOS
+Vorerst hier dokumentiert, eventuell verschiebe ich die Infos an einen anderen Ort: [Infos Nixos](nixos.md)
+
+## Debugging / Troubleshooting
 ### Wenn home-manager und nix nicht mehr gefunden werden
 
-```
+```shell
 # nix hinzufügen
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
