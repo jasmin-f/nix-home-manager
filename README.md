@@ -1,11 +1,5 @@
 # Home Manager Konfiguration
 
-## TODO
-
-- [ ] VS Code Extensions mit nix  
-- [ ] bashrc korrekt einfügen
-- [ ] (mehr siehe andere Todos)
-
 ## Infos
 
 ### Links
@@ -88,4 +82,3 @@ In WSL wird `ls -l /mnt/wsl/podman-sockets/` gefunden.
 # home manager reparierte Datei ausführen
 nix run home-manager/master -- switch
 ```
-
