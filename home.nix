@@ -342,10 +342,13 @@
             # (use with ~nix, ~proj)
             hash -d nix=/mnt/c/Users/jf/code/wsl/nix
             hash -d hm=/home/jf/.config/home-manager/
-            hash -d cfg=$HOME/.config
+            hash -d cfg=$HOME/.config # cd ~cfg
 
-            hash -d sep1=/mnt/c/Users/jf/code/studium/ost_3_semester/sep1
-            hash -d proj=/home/jf/wsl-code/ost_3_semester/
+            # hash -d sep1=/mnt/c/Users/jf/code/studium/ost_3_semester/sep1
+            hash -d o4=/home/jf/wsl-code/ost_4_semester/
+
+          # shell alias with arguments:
+            nfi() { nix flake new --refresh --template "github:jasmin-f/nix#$1-lock" "$2"; }
         '';
         
 
