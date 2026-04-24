@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "jasmin";
-  home.homeDirectory = "/home/jasmin";
+  home.username = "jf";
+  home.homeDirectory = "/home/jf";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -13,8 +13,8 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  # home.stateVersion = "25.05"; # Please read the comment before changing.
-	home.stateVersion = "25.11"; 
+  home.stateVersion = "25.05"; # Please read the comment before changing.
+
 
 
 
@@ -57,9 +57,9 @@
 
 
   programs.git = {
-    enable = true;
-    settings.user.email = "jasminfaessler.ch@gmail.com";
-    settings.user.name = "jasmin-f";
+    # enable = true;
+    # userEmail = "joe@example.org";
+    # userName = "joe";
   };
 
   # Home Manager can also manage your environment variables through
@@ -121,10 +121,10 @@
       bashrcExtra = 
 
       ''
-        #if [ -S /mnt/wsl/podman-sockets/podman-machine-default/podman.sock ]; then
-        #  podman system connection add wsl --default \
-        #    unix:///mnt/wsl/podman-sockets/podman-machine-default/podman.sock 2>/dev/null || true
-        #fi
+        if [ -S /mnt/wsl/podman-sockets/podman-machine-default/podman.sock ]; then
+          podman system connection add wsl --default \
+            unix:///mnt/wsl/podman-sockets/podman-machine-default/podman.sock 2>/dev/null || true
+        fi
       '' +
 
         # ''unix:///mnt/wsl/podman-sockets/podman-machine-default/podman-user.sock'' +
@@ -287,7 +287,7 @@
       
       # Settings for better user experience
       autocd = true;
-      dotDir = "/home/jasmin/.config/zsh";  # Store Zsh files in XDG location
+      dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
       
       sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
 
@@ -353,11 +353,8 @@
         
 
       };
-
-    
   };
 
-#   programs.home-manager.enable = true;
 
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["firefox.desktop"];
