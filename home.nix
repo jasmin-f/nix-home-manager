@@ -64,14 +64,11 @@
 
 programs = {
 
-    firefox = {
-
-      enable = true;
-      # bookmarks = {};
-      #   extensions.packages = with pkgs.inputs.firefox-addons; [
-      #     ublock-origin
-      #   ];
-    };
+    # toc
+    # - important stuff
+    # - programs use every day
+    # - helpful tools
+    # - shells
 
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
@@ -84,14 +81,44 @@ programs = {
     };
 
 
-  
+
+
+  	git = {
+   		enable = true;
+   		userEmail = "jasminfaessler.ch@gmail.com";
+  		userName = "jasmin-f";
+  	};
+
+
+
+
+
+	ssh = {
+	#	enable = true;
+	#	startAgent = true;
+	#	enableAskpassword = false;
+	};
+
+    # https://wiki.nixos.org/wiki/SSH_public_key_authentication
+    #	ssh.startAgent = true;
+    #programs.ssh = {
+    # startAgent = true;
+      #enableAskPassword = true;
+    #};
+
+    #environment.variables = {
+    #  SSH_ASKPASS_REQUIRE = "prefer";
+    #};
+
+
+
+
+
+
     bash = {
       enable = true;
-
       # bashrcExtra = '''';
-
       #profileExtra = '' # todo: autostart von zsh mit nix konfigurieren      '';
-
     };
     
 
@@ -99,7 +126,7 @@ programs = {
       # https://mynixos.com/home-manager/options/programs.zsh
 	
 	 enable = true;
-      
+       
       # Settings for better user experience
       autocd = true;
      # dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
@@ -174,14 +201,14 @@ programs = {
       }; # zsh
 
 
-  	git = {
-   		enable = true;
-   		userEmail = "jasminfaessler.ch@gmail.com";
-  		userName = "jasmin-f";
-  	};
+
+	
+
+  }; # programs
 
 
-  };
+
+ # }; # ??
 
 
 
