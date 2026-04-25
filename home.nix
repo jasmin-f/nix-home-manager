@@ -16,7 +16,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
 
-	stateVersion = "23.11"; # never change! 
+	stateVersion = "25.05"; # never change! changed from 23.11 to 25.05 so same as wsl setup 
 
 	
 	# my own text file!
