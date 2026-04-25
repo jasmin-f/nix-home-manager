@@ -17,9 +17,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      homeConfigurations."jf" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      #homeConfigurations."jf" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."jasmin" = home-manager.lib.homeManagerConfiguration {
 
+        inherit pkgs;
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ ./home.nix ];
