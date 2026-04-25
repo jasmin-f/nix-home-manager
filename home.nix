@@ -13,8 +13,8 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
- #home.stateVersion = "25.05"; # Please read the comment before changing.
-	home.stateVersion = "25.11"; 
+home.stateVersion = "25.05"; # Please read the comment before changing.
+#	home.stateVersion = "25.11"; 
 
 
 
@@ -23,7 +23,7 @@
   home.packages = [
     pkgs.man-pages pkgs.man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
-    pkgs.podman
+#    pkgs.podman
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -92,35 +92,35 @@
 
     
     # activate syntax highlighting
-    home.shellAliases = { ip = "ip --color=auto"; };
+#    home.shellAliases = { ip = "ip --color=auto"; };
     # home.shellAliases = { grep = "grep --color=auto"; };
 
 
   programs = {
 
-    firefox = {
+ #   firefox = {
 
-      enable = true;
+#      enable = true;
       # bookmarks = {};
       #   extensions.packages = with pkgs.inputs.firefox-addons; [
       #     ublock-origin
       #   ];
-    };
+  #  };
 
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
 
     direnv = {
-        enable = true;
-        enableBashIntegration = true; # see note on other shells below
-        nix-direnv.enable = true;
+  #      enable = true;
+  #      enableBashIntegration = true; # see note on other shells below
+   #     nix-direnv.enable = true;
     };
 
 
   
     bash = {
-      enable = true;
+   #   enable = true;
 
       bashrcExtra = 
 
@@ -278,7 +278,7 @@
         # problem with open ssh : not saving keys and ssh path missing (eval needed) 
 
         # todo: autostart von zsh mit nix konfigurieren
-        zsh
+   #     zsh
       '';
 
     };
@@ -289,7 +289,7 @@
     zsh = {
       # https://mynixos.com/home-manager/options/programs.zsh
 
-      enable = true;
+   #   enable = true;
       
       # Settings for better user experience
       autocd = true;
@@ -338,8 +338,8 @@
 
         shellAliases = {
           # or use ctrl+r to find last commands
-          nd = "nix develop";
-          zonedel = "find . -name '*:Zone.Identifier' -type f -delete";
+   #       nd = "nix develop";
+   #       zonedel = "find . -name '*:Zone.Identifier' -type f -delete";
         };
 
 
