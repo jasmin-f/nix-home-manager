@@ -3,8 +3,10 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "jasmin";
-  home.homeDirectory = "/home/jasmin";
+
+  home = {
+	username = "jasmin";
+  	homeDirectory = "/home/jasmin";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -14,15 +16,19 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
 
-	home.stateVersion = "23.11"; # never change! 
+	stateVersion = "23.11"; # never change! 
+
+	
+	# my own text file!
+	file."hello.txt".text = "Hello world from home.nix!";
 
 
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  	packages = with pkgs; [
     
-    hello
+	#    hello
 
     # man-pages man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
@@ -41,7 +47,8 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ];
+  	];
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
 
@@ -53,5 +60,9 @@
 #    "x-scheme-handler/http" = ["firefox.desktop"];
  #   "x-scheme-handler/https" = ["firefox.desktop"];
  # };
+
+
+
+   }; # home
 
 }

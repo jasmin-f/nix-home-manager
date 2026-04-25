@@ -1,0 +1,10 @@
+# from simple-homemanager by evertras tutorial
+#add this into home.nix file and "compile" to get hello.txt as package/ "cat ~/hello.txt"
+{ lib, pkgs, ... }: {
+	home = {
+		# ...
+		file = {
+			"hello.txt".text = "Hello, world!";
+		};
+	};
+}
