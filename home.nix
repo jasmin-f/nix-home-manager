@@ -29,6 +29,8 @@
   packages = with pkgs; [
 	neovim    
 	#    hello
+	keepass # try kepassxc
+	gnumake
 
     # man-pages man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
@@ -66,8 +68,7 @@ programs = {
 
     # toc
     # - important stuff
-    # - programs use every day
-    # - helpful tools
+    # - programs use every day, not nixpkgs (they are above)
     # - shells
 
     # Let Home Manager install and manage itself.
@@ -115,10 +116,15 @@ programs = {
 
 
 
+
+	# shells
     bash = {
       enable = true;
       # bashrcExtra = '''';
-      #profileExtra = '' # todo: autostart von zsh mit nix konfigurieren      '';
+      profileExtra = ''
+      	zsh
+      	# todo: autostart von zsh mit nix konfigurieren      
+      '';
     };
     
 
