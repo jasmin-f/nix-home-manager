@@ -20,19 +20,19 @@
 
 	
 	# my own text file!
-	file."hello.txt".text = "Hello world from home.nix!";
+#	file."hello.txt".text = "Hello world from home.nix!";
 
 
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  	packages = with pkgs; [
+  packages = with pkgs; [
     
 	#    hello
 
     # man-pages man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
-#    podman
+    podman
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -47,11 +47,144 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  	];
+   ];
+
+
+ }; # home
+
+
+
+
+
+
+
+
+
+
+
+programs = {
+
+    firefox = {
+
+      enable = true;
+      # bookmarks = {};
+      #   extensions.packages = with pkgs.inputs.firefox-addons; [
+      #     ublock-origin
+      #   ];
+    };
+
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
+
+    direnv = {
+        enable = true;
+        enableBashIntegration = true; # see note on other shells below
+        nix-direnv.enable = true;
+    };
+
+
+  
+    bash = {
+      enable = true;
+
+      # bashrcExtra = '''';
+
+      #profileExtra = '' # todo: autostart von zsh mit nix konfigurieren      '';
+
+    };
+    
+
+    zsh = {
+      # https://mynixos.com/home-manager/options/programs.zsh
+
+      enable = true;
+      
+      # Settings for better user experience
+      autocd = true;
+      dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
+      
+      sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+
+        # Syntax highlighting
+        syntaxHighlighting = {
+          enable = true;
+          highlighters = [
+            "main"
+            "brackets"
+            "pattern"
+            "cursor"
+            "root"
+          ];
+          styles = {
+            comment = "fg=black,bold";
+            alias = "fg=magenta,bold";
+          };
+          patterns = {
+            "rm -rf *" = "fg=white,bold,bg=red";
+          };
+        };
+
+        autosuggestion = {
+          enable = true;
+          highlight = "fg=244";
+          strategy = ["history" "completion"];
+        };
+        
+        oh-my-zsh = {
+          enable = true; 
+          # theme = "robbyrussell";
+          plugins =
+            [
+              "vi-mode"
+              # "git"
+              # "docker"
+              # "tmux"
+              # "history"
+            ];
+        };
+
+
+        shellAliases = {
+          # or use ctrl+r to find last commands
+          nd = "nix develop";
+          zonedel = "find . -name '*:Zone.Identifier' -type f -delete";
+        };
+
+
+        initContent = ''
+          # my most used directories :)
+            # (use with ~nix, ~proj)
+          #  hash -d nix=/mnt/c/Users/jf/code/wsl/nix
+           # hash -d hm=/home/jf/.config/home-manager/
+            #hash -d cfg=$HOME/.config # cd ~cfg
+
+            # hash -d sep1=/mnt/c/Users/jf/code/studium/ost_3_semester/sep1
+            #hash -d o4=/home/jf/wsl-code/ost_4_semester/
+
+          # shell alias with arguments:
+            nfi() { nix flake new --refresh --template "github:jasmin-f/nix#$1-lock" "$2"; }
+        '';
+        
+
+      };
+
+
+  	git = {
+   		enable = true;
+   		userEmail = "jasminfaessler.ch@gmail.com";
+  		userName = "jasmin-f";
+  	};
+
+
+  };
+
+
+
+
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
-
 #   programs.home-manager.enable = true;
 
 #  xdg.mimeApps.defaultApplications = {
@@ -63,6 +196,5 @@
 
 
 
-   }; # home
 
 }

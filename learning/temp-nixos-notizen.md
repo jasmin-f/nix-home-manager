@@ -1,5 +1,16 @@
 
 
+
+
+
+
+
+
+
+"file" erstellen weiter lernen unter evertras/simple-homemanager bei 06-explain-home-nix
+
+
+
 sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 sudo nix-channel --update
 
