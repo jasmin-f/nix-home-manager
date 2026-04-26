@@ -27,10 +27,22 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   packages = with pkgs; [
+	
+	# editors
 	neovim    
-	#    hello
+	
+	# todo: https://github.com/mrshmllow/affinity-nix
+
+	# daily programs
 	keepass # try kepassxc
+	# obsidian # unfree
+
+	# not used enough, use with devshell/flake: obs
+
+	#commands
 	gnumake
+
+
 
     # man-pages man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
@@ -72,8 +84,8 @@ programs = {
     # - shells
 
     # Let Home Manager install and manage itself.
-    home-manager.enable = true;
-
+#    home-manager.enable = true;
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
 
     direnv = {
         enable = true;
@@ -94,23 +106,6 @@ programs = {
 
 
 
-	ssh = {
-	#	enable = true;
-	#	startAgent = true;
-	#	enableAskpassword = false;
-	};
-
-    # https://wiki.nixos.org/wiki/SSH_public_key_authentication
-    #	ssh.startAgent = true;
-    #programs.ssh = {
-    # startAgent = true;
-      #enableAskPassword = true;
-    #};
-
-    #environment.variables = {
-    #  SSH_ASKPASS_REQUIRE = "prefer";
-    #};
-
 
 
 
@@ -122,7 +117,7 @@ programs = {
       enable = true;
       # bashrcExtra = '''';
       profileExtra = ''
-      	zsh
+    #  	zsh
       	# todo: autostart von zsh mit nix konfigurieren      
       '';
     };
@@ -133,11 +128,11 @@ programs = {
 	
 	 enable = true;
        
-      # Settings for better user experience
-      autocd = true;
-     # dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
+	      # Settings for better user experience
+      	autocd = true;
+     	# dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
       
-    #  sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+    	#  sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
 
         # Syntax highlighting
         syntaxHighlighting = {
@@ -170,7 +165,7 @@ programs = {
           plugins =
             [
               "vi-mode"
-              # "git"
+               "git"
               # "docker"
               # "tmux"
               # "history"
@@ -221,15 +216,13 @@ programs = {
 
 
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-#   programs.home-manager.enable = true;
 
-#  xdg.mimeApps.defaultApplications = {
- #   "text/html" = ["firefox.desktop"];
-  #  "text/xml" = ["firefox.desktop"];
-#    "x-scheme-handler/http" = ["firefox.desktop"];
- #   "x-scheme-handler/https" = ["firefox.desktop"];
- # };
+ xdg.mimeApps.defaultApplications = {
+   "text/html" = ["firefox.desktop"];
+   "text/xml" = ["firefox.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
+ };
 
 
 
