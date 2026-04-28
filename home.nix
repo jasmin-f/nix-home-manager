@@ -24,6 +24,9 @@
 
 
 
+
+
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   packages = with pkgs; [
@@ -105,7 +108,15 @@ programs = {
 
 
 
-
+  vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      # dracula-theme.theme-dracula
+      vscodevim.vim
+      # yzhang.markdown-all-in-one
+    ];
+  };
 
 
 
@@ -123,15 +134,22 @@ programs = {
     };
     
 
+
+
+
+  # zsh default shell
+    # ? users.defaultUserShell = pkgs.zsh;
+    # ? environment.shells = with pgks; [ zsh ]; # https://wiki.nixos.org/wiki/Zsh
+
     zsh = {
       # https://mynixos.com/home-manager/options/programs.zsh
-	
+
 	 enable = true;
-       
+
 	      # Settings for better user experience
       	autocd = true;
      	# dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
-      
+
     	#  sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
 
         # Syntax highlighting
@@ -158,9 +176,9 @@ programs = {
           highlight = "fg=244";
           strategy = ["history" "completion"];
         };
-        
+
         oh-my-zsh = {
-          enable = true; 
+          enable = true;
           # theme = "robbyrussell";
           plugins =
             [
@@ -193,7 +211,7 @@ programs = {
           # shell alias with arguments:
             nfi() { nix flake new --refresh --template "github:jasmin-f/nix#$1-lock" "$2"; }
         '';
-        
+
 
 
 
