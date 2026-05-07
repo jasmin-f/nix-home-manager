@@ -5,65 +5,65 @@
   # manage.
 
   home = {
-	username = "jasmin";
-  	homeDirectory = "/home/jasmin";
+    username = "jasmin";
+    homeDirectory = "/home/jasmin";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
+    # This value determines the Home Manager release that your configuration is
+    # compatible with. This helps avoid breakage when a new Home Manager release
+    # introduces backwards incompatible changes.
+    #
+    # You should not change this value, even if you update Home Manager. If you do
+    # want to update the value, then make sure to first check the Home Manager
+    # release notes.
 
-	stateVersion = "25.05"; # never change! changed from 23.11 to 25.05 so same as wsl setup 
-
-	
-	# my own text file!
-#	file."hello.txt".text = "Hello world from home.nix!";
-
+    stateVersion = "25.05"; # never change! changed from 23.11 to 25.05 so same as wsl setup 
+    
+    # my own text file!
+  #	file."hello.txt".text = "Hello world from home.nix!";
 
 
 
 
+    # The home.packages option allows you to install Nix packages into your
+    # environment.
+    packages = with pkgs; [
+      
+      # editors
+      neovim    
+      
+      # todo: https://github.com/mrshmllow/affinity-nix
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  packages = with pkgs; [
-	
-	# editors
-	neovim    
-	
-	# todo: https://github.com/mrshmllow/affinity-nix
+      # daily programs
+      keepass # try kepassxc
+      # obsidian # unfree
 
-	# daily programs
-	keepass # try kepassxc
-	# obsidian # unfree
+      # not used enough, use with devshell/flake: obs
 
-	# not used enough, use with devshell/flake: obs
-
-	#commands
-	gnumake
-
+      #commands
+      gnumake
 
 
-    # man-pages man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
-    podman
-    # pkgs.hello
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      # man-pages man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+      podman
+      # pkgs.hello
+
+  #   fonts aktuell in configuration und in home-manager nur enablen
+
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
    ];
 
 
@@ -74,6 +74,12 @@
 
 
 
+
+
+  fonts.fontconfig = {
+    enable = true;
+    antialiasing = null;
+  };
 
 
 
@@ -107,7 +113,7 @@ programs = {
 
 
 
-
+# https://wiki.nixos.org/wiki/VSCodium
   vscode = {
     enable = true;
     package = pkgs.vscodium;
