@@ -107,8 +107,8 @@ programs = {
 
   	git = {
    		enable = true;
-   		userEmail = "jasminfaessler.ch@gmail.com";
-  		userName = "jasmin-f";
+   		settings.user.email = "jasminfaessler.ch@gmail.com";
+  		settings.user.name = "jasmin-f";
   	};
 
 
