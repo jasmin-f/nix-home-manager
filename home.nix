@@ -4,6 +4,11 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "obsidian"
+    ];
+
+
   home = {
     username = "jasmin";
     homeDirectory = "/home/jasmin";
@@ -35,7 +40,7 @@
 
       # daily programs
       keepass # try kepassxc
-      # obsidian # unfree
+      obsidian # unfree
 
       # not used enough, use with devshell/flake: obs
 
