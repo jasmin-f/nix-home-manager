@@ -3,10 +3,10 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-#    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
- 
-	nixpkgs.url = "github:nixos/nixpkgs?rev=0726a0ecb6d4e08f6adced58726b95db924cef57"; 
- home-manager = {
+    #    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nixpkgs.url = "github:nixos/nixpkgs?rev=0726a0ecb6d4e08f6adced58726b95db924cef57";
+    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -15,30 +15,29 @@
   outputs =
     { nixpkgs, home-manager, ... }:
     let
-    	lib = nixpkgs.lib;
-     	 system = "x86_64-linux";
-     	 #pkgs = nixpkgs.legacyPackages.${system};
-    	pkgs = import nixpkgs { inherit system; };
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      #pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs { inherit system; };
     in
     {
-     	 #homeConfigurations."jf" = home-manager.lib.homeManagerConfiguration {
-	    #  homeConfigurations."jasmin" = home-manager.lib.homeManagerConfiguration {
+      #homeConfigurations."jf" = home-manager.lib.homeManagerConfiguration {
+      #  homeConfigurations."jasmin" = home-manager.lib.homeManagerConfiguration {
 
-    	 #   inherit pkgs;
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-     	 #  modules = [ ./home.nix ];
+      #   inherit pkgs;
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      #  modules = [ ./home.nix ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-     	# };
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
+      # };
 
-
-    homeConfigurations = {
-     	jasmin = home-manager.lib.homeManagerConfiguration {
-		inherit pkgs;
-		modules = [ ./home.nix ];
-	};
-     };
+      homeConfigurations = {
+        jasmin = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ];
+        };
+      };
     };
 }

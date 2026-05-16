@@ -4,10 +4,11 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
       "obsidian"
     ];
-
 
   home = {
     username = "jasmin";
@@ -21,21 +22,18 @@
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
 
-    stateVersion = "25.05"; # never change! changed from 23.11 to 25.05 so same as wsl setup 
-    
+    stateVersion = "25.05"; # never change! changed from 23.11 to 25.05 so same as wsl setup
+
     # my own text file!
-  #	file."hello.txt".text = "Hello world from home.nix!";
-
-
-
+    #	file."hello.txt".text = "Hello world from home.nix!";
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = with pkgs; [
-      
+
       # editors
-      neovim    
-      
+      neovim
+
       # todo: https://github.com/mrshmllow/affinity-nix
 
       # daily programs
@@ -47,15 +45,12 @@
       #commands
       gnumake
 
-
-
-
       # man-pages man-pages-posix # manpages, info: https://wiki.nixos.org/wiki/Man_pages, test with "man 3p putenv"
 
       podman
       # pkgs.hello
 
-  #   fonts aktuell in configuration und in home-manager nur enablen
+      #   fonts aktuell in configuration und in home-manager nur enablen
 
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
@@ -69,28 +64,16 @@
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
-   ];
+    ];
 
-
- }; # home
-
-
-
-
-
-
-
+  }; # home
 
   fonts.fontconfig = {
     enable = true;
     antialiasing = null;
   };
 
-
-
-
-
-programs = {
+  programs = {
 
     # toc
     # - important stuff
@@ -98,162 +81,128 @@ programs = {
     # - shells
 
     # Let Home Manager install and manage itself.
-#    home-manager.enable = true;
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+    #    home-manager.enable = true;
+    # Home Manager is pretty good at managing dotfiles. The primary way to manage
 
     direnv = {
-        enable = true;
-        enableBashIntegration = true; # see note on other shells below
-        nix-direnv.enable = true;
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
     };
 
+    git = {
+      enable = true;
+      settings.user.email = "jasminfaessler.ch@gmail.com";
+      settings.user.name = "jasmin-f";
+    };
 
+    # https://wiki.nixos.org/wiki/VSCodium
+    vscode = {
+      enable = true;
+      package = pkgs.vscodium;
+      profiles.default.extensions = with pkgs.vscode-extensions; [
+        # dracula-theme.theme-dracula
+        vscodevim.vim
+        # yzhang.markdown-all-in-one
+      ];
+    };
 
-
-  	git = {
-   		enable = true;
-   		settings.user.email = "jasminfaessler.ch@gmail.com";
-  		settings.user.name = "jasmin-f";
-  	};
-
-
-
-# https://wiki.nixos.org/wiki/VSCodium
-  vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      # dracula-theme.theme-dracula
-      vscodevim.vim
-      # yzhang.markdown-all-in-one
-    ];
-  };
-
-
-
-
-
-
-	# shells
+    # shells
     bash = {
       enable = true;
       # bashrcExtra = '''';
       profileExtra = ''
-    #  	zsh
-      	# todo: autostart von zsh mit nix konfigurieren      
+        #  	zsh
+          	# todo: autostart von zsh mit nix konfigurieren      
       '';
     };
-    
 
-
-
-
-  # zsh default shell
+    # zsh default shell
     # ? users.defaultUserShell = pkgs.zsh;
     # ? environment.shells = with pgks; [ zsh ]; # https://wiki.nixos.org/wiki/Zsh
 
     zsh = {
       # https://mynixos.com/home-manager/options/programs.zsh
 
-	 enable = true;
+      enable = true;
 
-	      # Settings for better user experience
-      	autocd = true;
-     	# dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
+      # Settings for better user experience
+      autocd = true;
+      # dotDir = "/home/jf/.config/zsh";  # Store Zsh files in XDG location
 
-    	#  sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+      #  sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
 
-        # Syntax highlighting
-        syntaxHighlighting = {
-          enable = true;
-          highlighters = [
-            "main"
-            "brackets"
-            "pattern"
-            "cursor"
-            "root"
-          ];
-          styles = {
-            comment = "fg=black,bold";
-            alias = "fg=magenta,bold";
-          };
-          patterns = {
-            "rm -rf *" = "fg=white,bold,bg=red";
-          };
+      # Syntax highlighting
+      syntaxHighlighting = {
+        enable = true;
+        highlighters = [
+          "main"
+          "brackets"
+          "pattern"
+          "cursor"
+          "root"
+        ];
+        styles = {
+          comment = "fg=black,bold";
+          alias = "fg=magenta,bold";
         };
-
-        autosuggestion = {
-          enable = true;
-          highlight = "fg=244";
-          strategy = ["history" "completion"];
+        patterns = {
+          "rm -rf *" = "fg=white,bold,bg=red";
         };
+      };
 
-        oh-my-zsh = {
-          enable = true;
-          # theme = "robbyrussell";
-          plugins =
-            [
-              "vi-mode"
-               "git"
-              # "docker"
-              # "tmux"
-              # "history"
-            ];
-        };
+      autosuggestion = {
+        enable = true;
+        highlight = "fg=244";
+        strategy = [
+          "history"
+          "completion"
+        ];
+      };
 
+      oh-my-zsh = {
+        enable = true;
+        # theme = "robbyrussell";
+        plugins = [
+          "vi-mode"
+          "git"
+          # "docker"
+          # "tmux"
+          # "history"
+        ];
+      };
 
-        #shellAliases = {
-         # # or use ctrl+r to find last commands
-          #nd = "nix develop";
-          #zonedel = "find . -name '*:Zone.Identifier' -type f -delete";
-        #};
+      #shellAliases = {
+      # # or use ctrl+r to find last commands
+      #nd = "nix develop";
+      #zonedel = "find . -name '*:Zone.Identifier' -type f -delete";
+      #};
 
+      initContent = ''
+        # my most used directories :)
+          # (use with ~nix, ~proj)
+          hash -d nix=/mnt/c/Users/jf/code/wsl/nix
+          hash -d hm=/home/jf/.config/home-manager/
+          hash -d cfg=$HOME/.config # cd ~cfg
 
-        initContent = ''
-          # my most used directories :)
-            # (use with ~nix, ~proj)
-            hash -d nix=/mnt/c/Users/jf/code/wsl/nix
-            hash -d hm=/home/jf/.config/home-manager/
-            hash -d cfg=$HOME/.config # cd ~cfg
+          # hash -d sep1=/mnt/c/Users/jf/code/studium/ost_3_semester/sep1
+          hash -d o4=/home/jf/wsl-code/ost_4_semester/
 
-            # hash -d sep1=/mnt/c/Users/jf/code/studium/ost_3_semester/sep1
-            hash -d o4=/home/jf/wsl-code/ost_4_semester/
+        # shell alias with arguments:
+          nfi() { nix flake new --refresh --template "github:jasmin-f/nix#$1-lock" "$2"; }
+      '';
 
-          # shell alias with arguments:
-            nfi() { nix flake new --refresh --template "github:jasmin-f/nix#$1-lock" "$2"; }
-        '';
-
-
-
-
-
-
-      }; # zsh
-
-
-
-	
+    }; # zsh
 
   }; # programs
 
+  # }; # ??
 
-
- # }; # ??
-
-
-
-
-
-
-
- xdg.mimeApps.defaultApplications = {
-   "text/html" = ["firefox.desktop"];
-   "text/xml" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
- };
-
-
-
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = [ "firefox.desktop" ];
+    "text/xml" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
+  };
 
 }
